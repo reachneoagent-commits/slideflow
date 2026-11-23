@@ -12,3 +12,11 @@ packaging/env.sh
 /packaging/linux/flatpak/cargo-sources.json
 /build-flatpak/
 /.flatpak-builder/
+*.dmg
+*.msi
+*.exe
+*.zip
+.vscode/
+.idea/
+*.swp
+*.swo
