@@ -1,3 +1,10 @@
+<p align="left">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.png">
+    <img src="assets/header-light.png" width="600" height="160" alt="Slideflow logo and name">
+  </picture>
+</p>
+
 <p align="center"><b>Presentations and slide decks; a modern presentation and slide designer built in pure Rust.</b></p>
 
 Slideflow is part of the FlowApps suite. It is an open-source presentation application: build decks
