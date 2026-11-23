@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
@@ -42,7 +42,7 @@ jobs:
           hdiutil internet-enable -yes "dist/slideflow-${VERSION}-macos-arm64.dmg"
 
       - name: Upload macOS asset
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: dist/slideflow-${{ env.VERSION }}-macos-arm64.dmg
           generate_release_notes: true
@@ -56,7 +56,7 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
@@ -73,7 +73,7 @@ jobs:
           Compress-Archive -Path target/release/deckcraft.exe -DestinationPath "dist/slideflow-${{ env.VERSION }}-windows-x64-portable.zip"
 
       - name: Upload Windows asset
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: dist/slideflow-${{ env.VERSION }}-windows-x64-portable.zip
           generate_release_notes: true
@@ -86,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Generate SHA256SUMS.txt from release assets
         run: |
@@ -95,7 +95,7 @@ jobs:
           sha256sum * > SHA256SUMS.txt
 
       - name: Upload checksums
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: dist/SHA256SUMS.txt
           generate_release_notes: true
