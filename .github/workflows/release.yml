@@ -32,8 +32,8 @@ jobs:
           rm -rf "$APP_BUNDLE"
           mkdir -p "$APP_BUNDLE/Contents/MacOS"
           mkdir -p "$APP_BUNDLE/Contents/Resources"
-          cp target/release/wordcraft "$APP_BUNDLE/Contents/MacOS/wordcraft"
-          printf '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0">\n<dict>\n\t<key>CFBundleDisplayName</key>\n\t<string>Wordflow</string>\n\t<key>CFBundleIdentifier</key>\n\t<string>com.wordflow.app</string>\n\t<key>CFBundleExecutable</key>\n\t<string>wordcraft</string>\n\t<key>CFBundleIconFile</key>\n\t<string>Wordflow.icns</string>\n\t<key>CFBundleName</key>\n\t<string>Wordflow</string>\n\t<key>CFBundlePackageType</key>\n\t<string>APPL</string>\n\t<key>CFBundleShortVersionString</key>\n\t<string>%s</string>\n\t<key>CFBundleVersion</key>\n\t<string>%s</string>\n\t<key>NSHumanReadableCopyright</key>\n\t<string>© Reach Neo</string>\n</dict>\n</plist>\n' "$VERSION" "$VERSION" > "$APP_BUNDLE/Contents/Info.plist"
+          cp target/release/deckcraft "$APP_BUNDLE/Contents/MacOS/deckcraft"
+          printf '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0">\n<dict>\n\t<key>CFBundleDisplayName</key>\n\t<string>Slideflow</string>\n\t<key>CFBundleIdentifier</key>\n\t<string>com.slideflow.app</string>\n\t<key>CFBundleExecutable</key>\n\t<string>deckcraft</string>\n\t<key>CFBundleIconFile</key>\n\t<string>Slideflow.icns</string>\n\t<key>CFBundleName</key>\n\t<string>Slideflow</string>\n\t<key>CFBundlePackageType</key>\n\t<string>APPL</string>\n\t<key>CFBundleShortVersionString</key>\n\t<string>%s</string>\n\t<key>CFBundleVersion</key>\n\t<string>%s</string>\n\t<key>NSHumanReadableCopyright</key>\n\t<string>© Reach Neo</string>\n</dict>\n</plist>\n' "$VERSION" "$VERSION" > "$APP_BUNDLE/Contents/Info.plist"
 
       - name: Create macOS DMG
         run: |
