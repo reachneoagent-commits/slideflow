@@ -17,7 +17,7 @@ with themes, layouts, shapes, pictures, tables, charts, transitions and animatio
 - **Your files** — open and save .pptx presentations; import PowerPoint 97–2003 .ppt/.pot/.pps
 - **Themes & layouts** — slide masters, eleven layouts, eight themes with colour and font schemes
 - **Draw & animate** — 150+ shapes, transitions, entrance/emphasis/exit animations, morph
-- **Native desktop** — macOS (Apple Silicon and Intel) and Windows x64 builds
+- **Native desktop** — macOS (Apple Silicon) and Windows x64 builds
 - **Private** — works offline; no accounts, no telemetry, no cloud
 
 ## Features
@@ -30,13 +30,14 @@ with themes, layouts, shapes, pictures, tables, charts, transitions and animatio
 
 ## Download and install
 
-Installers for macOS and Windows are available on the [latest release](https://github.com/reachneoagent-commits/slideflow/releases/latest). Slideflow is also available through the [FlowApps launcher](https://github.com/reachneoagent-commits/FlowApps-Launcher/releases/latest).
+Download the installer for your system (latest version, 0.1.0 release candidate 1). Slideflow is also available through the [FlowApps launcher](https://github.com/reachneoagent-commits/FlowApps-Launcher/releases/latest).
 
-| Platform | Installer |
+| Platform | Download |
 |---|---|
-| macOS, Apple silicon (M1 or newer) | DMG (`Slideflow-<version>-macos-arm64.dmg`) |
-| macOS, Intel | DMG (`Slideflow-<version>-macos-x64.dmg`) |
-| Windows x64 | Installer (`Slideflow-<version>-windows-x64.msi`) · Portable (`.zip`) |
+| macOS, Apple silicon (M1 or newer) | [DMG](https://github.com/reachneoagent-commits/slideflow/releases/download/v0.1.0-rc.1/slideflow-0.1.0-rc.1-macos-arm64.dmg) |
+| Windows x64 | [Portable zip](https://github.com/reachneoagent-commits/slideflow/releases/download/v0.1.0-rc.1/slideflow-0.1.0-rc.1-windows-x64-portable.zip) (unzip and run) |
+
+macOS on Intel and a Windows installer are not built yet. Older versions and checksums are on the [Releases page](https://github.com/reachneoagent-commits/slideflow/releases).
 
 The app is not code-signed with a paid certificate, so macOS and Windows warn you the first time you open it. Every release lists SHA-256 checksums to check the files against.
 
@@ -45,7 +46,7 @@ The app is not code-signed with a paid certificate, so macOS and Windows warn yo
 
 ## Supported platforms
 
-- **Desktop app:** macOS on Apple Silicon and Intel; Windows x64
+- **Desktop app:** macOS on Apple Silicon; Windows x64 (Intel Mac build planned)
 
 ## Build from source
 
