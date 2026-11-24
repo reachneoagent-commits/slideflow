@@ -15,10 +15,10 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git clone --depth 1 --branch "$GITHUB_REF_NAME" "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" .
 
       - name: Build wordflow (release, macOS)
         run: cargo build --release -p deckcraft
@@ -41,14 +41,13 @@ jobs:
           hdiutil create -srcfolder Slideflow.app -ov -format UDZO "dist/slideflow-${VERSION}-macos-arm64.dmg"
           hdiutil internet-enable -yes "dist/slideflow-${VERSION}-macos-arm64.dmg"
 
-      - name: Upload macOS asset
-        uses: softprops/action-gh-release@v2
-        with:
-          files: dist/slideflow-${{ env.VERSION }}-macos-arm64.dmg
-          generate_release_notes: true
-          fail_on_unmatched_files: false
+      - name: Upload asset
+        shell: bash
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" --generate-notes --prerelease || true
+          gh release upload "$GITHUB_REF_NAME" "dist/slideflow-${VERSION}-macos-arm64.dmg" -R "$GITHUB_REPOSITORY" --clobber
 
   build-windows:
     runs-on: windows-latest
@@ -56,10 +55,10 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git clone --depth 1 --branch "$GITHUB_REF_NAME" "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" .
 
       - name: Build wordflow (release, Windows)
         run: cargo build --release -p deckcraft
@@ -72,33 +71,30 @@ jobs:
           New-Item -ItemType Directory -Force dist | Out-Null
           Compress-Archive -Path target/release/deckcraft.exe -DestinationPath "dist/slideflow-${{ env.VERSION }}-windows-x64-portable.zip"
 
-      - name: Upload Windows asset
-        uses: softprops/action-gh-release@v2
-        with:
-          files: dist/slideflow-${{ env.VERSION }}-windows-x64-portable.zip
-          generate_release_notes: true
-          fail_on_unmatched_files: false
+      - name: Upload asset
+        shell: bash
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" --generate-notes --prerelease || true
+          gh release upload "$GITHUB_REF_NAME" "dist/slideflow-${VERSION}-windows-x64-portable.zip" -R "$GITHUB_REPOSITORY" --clobber
 
   checksums:
     needs: [build-macos, build-windows]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Generate SHA256SUMS.txt from release assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release download "${{ github.ref_name }}" --dir dist --pattern "*"
+          gh release download "${{ github.ref_name }}" -R "$GITHUB_REPOSITORY" --dir dist --pattern "*"
           cd dist
           sha256sum * > SHA256SUMS.txt
 
-      - name: Upload checksums
-        uses: softprops/action-gh-release@v2
-        with:
-          files: dist/SHA256SUMS.txt
-          generate_release_notes: true
-          fail_on_unmatched_files: false
+      - name: Upload asset
+        shell: bash
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" --generate-notes --prerelease || true
+          gh release upload "$GITHUB_REF_NAME" "dist/SHA256SUMS.txt" -R "$GITHUB_REPOSITORY" --clobber
