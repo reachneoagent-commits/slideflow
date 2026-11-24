@@ -39,7 +39,6 @@ jobs:
         run: |
           mkdir -p dist
           hdiutil create -srcfolder Slideflow.app -ov -format UDZO "dist/slideflow-${VERSION}-macos-arm64.dmg"
-          hdiutil internet-enable -yes "dist/slideflow-${VERSION}-macos-arm64.dmg"
 
       - name: Upload asset
         shell: bash
