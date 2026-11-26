@@ -1,16 +1,16 @@
-# Flatpak manifest for Slideflow, ready for a Flathub submission.
+# Flatpak manifest for DeckCraft, ready for a Flathub submission.
 #
 # Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
 #
 #   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
 #   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
 #   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.deckcraft.yml
-#   flatpak run ai.storyteller.slideflow
+#   flatpak run ai.storyteller.deckcraft
 #
 # For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
-# The release's .flatpak bundles are built from ai.storyteller.slideflow.bundle.yml instead (it
+# The release's .flatpak bundles are built from ai.storyteller.deckcraft.bundle.yml instead (it
 # repackages the Linux tarball); keep runtime-version and finish-args identical in both.
-id: ai.storyteller.slideflow
+id: ai.storyteller.deckcraft
 runtime: org.freedesktop.Platform
 runtime-version: '25.08'
 sdk: org.freedesktop.Sdk

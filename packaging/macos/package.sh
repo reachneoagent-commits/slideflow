@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Build, sign and (optionally) notarize the macOS release artifacts:
 #
-#   $DIST/slideflow-<version>-macos-<arch>.dmg          Slideflow.app on a drag-to-Applications DMG
-#   $DIST/slideflow-cli-<version>-macos-<arch>.zip      the headless CLI
+#   $DIST/deckcraft-<version>-macos-<arch>.dmg          Slideflow.app on a drag-to-Applications DMG
+#   $DIST/deckcraft-cli-<version>-macos-<arch>.zip      the headless CLI
 #
 # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
 #
@@ -40,8 +40,8 @@ IDENTITY="${MACOS_SIGN_IDENTITY:--}"
 SHORT_VERSION="${VERSION%%-*}"
 WORK="$CARGO_TARGET_DIR/macos-package"
 APP="$WORK/Slideflow.app"
-DMG="$DIST/slideflow-$VERSION-macos-$ARCH.dmg"
-CLI_ZIP="$DIST/slideflow-cli-$VERSION-macos-$ARCH.zip"
+DMG="$DIST/deckcraft-$VERSION-macos-$ARCH.dmg"
+CLI_ZIP="$DIST/deckcraft-cli-$VERSION-macos-$ARCH.zip"
 
 NOTARIZE=0
 if [[ "$IDENTITY" = "-" ]]; then
@@ -117,12 +117,12 @@ echo "==> assembling $APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 # Executable and icon carry the display name (CFBundleExecutable / CFBundleIconFile).
 cp "$WORK/bin/deckcraft" "$APP/Contents/MacOS/Slideflow"
-cp "$ROOT/assets/app-icon/slideflow.icns" "$APP/Contents/Resources/Slideflow.icns"
+cp "$ROOT/assets/app-icon/deckcraft.icns" "$APP/Contents/Resources/Slideflow.icns"
 # The licences and README, as in the CLI zip, plus the licences of the embedded craft-fonts
 # fonts when built with CRAFT_FONTS_DIR. Before signing, so the seal covers them.
 copy_docs "$APP/Contents/Resources"
 sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
-  -e "s/@BUILD_SHA@/${SLIDEFLOW_BUILD_SHA:-unknown}/g" \
+  -e "s/@BUILD_SHA@/${DECKCRAFT_BUILD_SHA:-unknown}/g" \
   "$HERE/Info.plist.in" >"$APP/Contents/Info.plist"
 plutil -lint "$APP/Contents/Info.plist"
 printf 'APPL????' >"$APP/Contents/PkgInfo"
@@ -169,7 +169,7 @@ fi
 
 # ---- CLI ---------------------------------------------------------------------------------------
 echo "==> building $CLI_ZIP"
-CLI_DIR="$WORK/slideflow-cli-$VERSION-macos-$ARCH"
+CLI_DIR="$WORK/deckcraft-cli-$VERSION-macos-$ARCH"
 mkdir -p "$CLI_DIR"
 cp "$WORK/bin/deckcraft-cli" "$CLI_DIR/"
 copy_docs "$CLI_DIR"

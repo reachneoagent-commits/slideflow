@@ -1,0 +1,157 @@
+{
+  "name": "Slideflow",
+  "bundle": "com.slideflow.app",
+  "repo": "reachneoagent-commits/slideflow",
+  "upstream_name": "DeckCraft",
+  "_comment": "Every change to an upstream-owned file. Applied in order by rebrand/apply.py; see docs/UPSTREAM.md.",
+  "edits": [
+    {
+      "file": "apps/deckcraft/src/main.rs",
+      "find": "Application Support/DeckCraft\"",
+      "replace": "Application Support/Slideflow\""
+    },
+    {
+      "file": "apps/deckcraft/src/main.rs",
+      "find": "\"DeckCraft\"",
+      "replace": "\"Slideflow\""
+    },
+    {
+      "file": "apps/deckcraft/src/main.rs",
+      "find": "c.join(\"deckcraft\")",
+      "replace": "c.join(\"slideflow\")"
+    },
+    {
+      "file": "apps/deckcraft/src/main.rs",
+      "find": "\"ai.storyteller.deckcraft\"",
+      "replace": "\"com.slideflow.app\""
+    },
+    {
+      "file": "apps/deckcraft/src/main.rs",
+      "find": "\"DeckCraft update helper failed",
+      "replace": "\"Slideflow update helper failed"
+    },
+    {
+      "file": "apps/deckcraft/src/main.rs",
+      "find": "println!(\"deckcraft {}\"",
+      "replace": "println!(\"slideflow {}\""
+    },
+    {
+      "file": "apps/deckcraft/src/main.rs",
+      "find": "log::info!(\"DeckCraft {} (",
+      "replace": "log::info!(\"Slideflow {} ("
+    },
+    {
+      "file": "apps/deckcraft/src/main.rs",
+      "find": "\"DeckCraft needs a graphical session",
+      "replace": "\"Slideflow needs a graphical session"
+    },
+    {
+      "file": "packaging/macos/Info.plist.in",
+      "find": "Copyright © the DeckCraft authors.",
+      "replace": "Copyright © Reach Neo."
+    },
+    {
+      "file": "packaging/macos/Info.plist.in",
+      "find": "<string>ai.storyteller.deckcraft</string>",
+      "replace": "<string>com.slideflow.app</string>"
+    },
+    {
+      "file": "packaging/macos/Info.plist.in",
+      "find": "DeckCraft",
+      "replace": "Slideflow"
+    },
+    {
+      "file": "packaging/macos/package.sh",
+      "find": "DeckCraft",
+      "replace": "Slideflow"
+    },
+    {
+      "file": "packaging/windows/deckcraft.wxs",
+      "find": "Learning Machines LLC",
+      "replace": "Reach Neo"
+    },
+    {
+      "file": "packaging/windows/deckcraft.wxs",
+      "find": "https://getartcraft.com/apps/deckcraft",
+      "replace": "https://github.com/reachneoagent-commits/slideflow"
+    },
+    {
+      "file": "packaging/windows/deckcraft.wxs",
+      "find": "https://discord.gg/artcraft",
+      "replace": "https://github.com/reachneoagent-commits/slideflow"
+    },
+    {
+      "file": "packaging/windows/deckcraft.wxs",
+      "find": "<Directory Id=\"CraftSuiteFolder\" Name=\"ArtCraft\">",
+      "replace": "<Directory Id=\"CraftSuiteFolder\" Name=\"FlowApps\">"
+    },
+    {
+      "file": "packaging/windows/deckcraft.wxs",
+      "find": "DeckCraft",
+      "replace": "Slideflow"
+    }
+  ],
+  "prepend": [
+    {
+      "file": "CLAUDE.md",
+      "marker": "<!-- Slideflow (rebrand/apply.py) -->",
+      "lines": [
+        "<!-- Slideflow (rebrand/apply.py) -->",
+        "# Slideflow",
+        "",
+        "This repository is **Slideflow**, a fork of DeckCraft. Read `docs/UPSTREAM.md` first. In short:",
+        "",
+        "- Never hand-edit a file that came from upstream to change branding, ids, links or icons: add the",
+        "  change to `rebrand/brand.json` (or a patch in `rebrand/patches/`) and run `python3 rebrand/apply.py`,",
+        "  so it survives the next upstream merge.",
+        "- Slideflow's own files are `rebrand/`, `brand/`, `docs/UPSTREAM.md`, `README.md`,",
+        "  `assets/header-*.png` and `.github/workflows/release.yml` / `windows-release.yml`.",
+        "- Crate, binary and environment-variable names stay `deckcraft*` / `DECKCRAFT_*`.",
+        ""
+      ]
+    }
+  ],
+  "append": [
+    {
+      "file": "NOTICE",
+      "marker": "Slideflow is a modified version",
+      "lines": [
+        "",
+        "Slideflow",
+        "",
+        "Slideflow is a modified version of DeckCraft, made by Reach Neo as part of the FlowApps suite.",
+        "It changes the name, icon, identifiers and links; rebrand/brand.json lists every change.",
+        "Slideflow is not affiliated with or endorsed by the ArtCraft Team. The Slideflow name and mark",
+        "(brand/, assets/app-icon/) are not covered by the license above."
+      ]
+    },
+    {
+      "file": ".gitattributes",
+      "marker": "(rebrand/apply.py): files we replace whole",
+      "lines": [
+        "",
+        "# Slideflow (rebrand/apply.py): files we replace whole keep our version in a merge.",
+        "# Needs `git config merge.ours.driver true` once per clone (docs/UPSTREAM.md).",
+        "README.md merge=ours",
+        ".github/workflows/release.yml merge=ours",
+        ".github/workflows/windows-release.yml merge=ours",
+        "assets/app-icon/** merge=ours"
+      ]
+    },
+    {
+      "file": ".gitignore",
+      "marker": "# FlowApps release builds",
+      "lines": [
+        "# FlowApps release builds and editor files",
+        "/*.dmg",
+        "/*.msi",
+        "*.exe",
+        "*.zip",
+        ".vscode/",
+        ".idea/",
+        "*.swp",
+        "*.swo"
+      ]
+    }
+  ]
+}

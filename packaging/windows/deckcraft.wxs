@@ -46,8 +46,8 @@
     <ComponentGroup Id="DeckcraftFiles" Directory="INSTALLFOLDER">
       <Component Id="DeckcraftApp" Guid="D87EA444-41A4-4C19-922E-66D1A29461FF">
         <File Id="DeckcraftNotice" Source="$(var.BinDir)\NOTICE" KeyPath="no" />
-        <File Id="DeckcraftExe" Source="$(var.BinDir)\slideflow.exe" KeyPath="yes">
-          <!-- No Icon here, so the shortcut shows the icon embedded in slideflow.exe (build.rs). An
+        <File Id="DeckcraftExe" Source="$(var.BinDir)\deckcraft.exe" KeyPath="yes">
+          <!-- No Icon here, so the shortcut shows the icon embedded in deckcraft.exe (build.rs). An
                MSI Icon is cached under %APPDATA%\Microsoft\Installer\{ProductCode}\, and every
                update is a major upgrade with a new ProductCode that deletes the old folder. A
                taskbar pin is a copy of this shortcut that the update never touches, so it kept
@@ -57,23 +57,23 @@
           <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Slideflow" Description="Slideflow presentations and slide shows" WorkingDirectory="INSTALLFOLDER" Advertise="no" />
         </File>
 
-        <!-- .slideflow: Slideflow's own format. -->
+        <!-- .deckcraft: Slideflow's own format. -->
         <ProgId Id="Slideflow.Presentation" Description="Slideflow Presentation" Icon="DeckcraftExe" IconIndex="0">
-          <Extension Id="slideflow" ContentType="application/x-slideflow">
+          <Extension Id="deckcraft" ContentType="application/x-deckcraft">
             <Verb Id="open" Command="Open" TargetFile="DeckcraftExe" Argument="&quot;%1&quot;" />
           </Extension>
         </ProgId>
 
         <!-- "Open with" for PowerPoint formats, without becoming the default. -->
-        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slideflow.exe" Name="FriendlyAppName" Value="Slideflow" Type="string" />
-        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slideflow.exe\shell\open\command" Value="&quot;[#DeckcraftExe]&quot; &quot;%1&quot;" Type="string" />
-        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slideflow.exe\SupportedTypes" Name=".slideflow" Value="" Type="string" />
-        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slideflow.exe\SupportedTypes" Name=".pptx" Value="" Type="string" />
-        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slideflow.exe\SupportedTypes" Name=".potx" Value="" Type="string" />
-        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slideflow.exe\SupportedTypes" Name=".ppsx" Value="" Type="string" />
-        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slideflow.exe\SupportedTypes" Name=".ppt" Value="" Type="string" />
-        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slideflow.exe\SupportedTypes" Name=".pot" Value="" Type="string" />
-        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slideflow.exe\SupportedTypes" Name=".pps" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\deckcraft.exe" Name="FriendlyAppName" Value="Slideflow" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\deckcraft.exe\shell\open\command" Value="&quot;[#DeckcraftExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\deckcraft.exe\SupportedTypes" Name=".deckcraft" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\deckcraft.exe\SupportedTypes" Name=".pptx" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\deckcraft.exe\SupportedTypes" Name=".potx" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\deckcraft.exe\SupportedTypes" Name=".ppsx" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\deckcraft.exe\SupportedTypes" Name=".ppt" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\deckcraft.exe\SupportedTypes" Name=".pot" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\deckcraft.exe\SupportedTypes" Name=".pps" Value="" Type="string" />
         <RegistryValue Root="HKMU" Key="Software\Classes\.pptx\OpenWithProgids" Name="Slideflow.Presentation" Value="" Type="string" />
         <RegistryValue Root="HKMU" Key="Software\Classes\.potx\OpenWithProgids" Name="Slideflow.Presentation" Value="" Type="string" />
         <RegistryValue Root="HKMU" Key="Software\Classes\.ppsx\OpenWithProgids" Name="Slideflow.Presentation" Value="" Type="string" />
@@ -81,12 +81,12 @@
         <RegistryValue Root="HKMU" Key="Software\Classes\.pot\OpenWithProgids" Name="Slideflow.Presentation" Value="" Type="string" />
         <RegistryValue Root="HKMU" Key="Software\Classes\.pps\OpenWithProgids" Name="Slideflow.Presentation" Value="" Type="string" />
 
-        <RegistryValue Root="HKMU" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\slideflow.exe" Value="[#DeckcraftExe]" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\deckcraft.exe" Value="[#DeckcraftExe]" Type="string" />
       <RegistryValue Root="HKMU" Key="Software\Slideflow" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
       </Component>
 
       <Component Id="DeckcraftCli">
-        <File Id="DeckcraftCliExe" Source="$(var.BinDir)\slideflow-cli.exe" KeyPath="yes" />
+        <File Id="DeckcraftCliExe" Source="$(var.BinDir)\deckcraft-cli.exe" KeyPath="yes" />
       </Component>
     </ComponentGroup>
   </Fragment>
