@@ -12,8 +12,9 @@ packaging/env.sh
 /packaging/linux/flatpak/cargo-sources.json
 /build-flatpak/
 /.flatpak-builder/
-*.dmg
-*.msi
+# FlowApps release builds and editor files
+/*.dmg
+/*.msi
 *.exe
 *.zip
 .vscode/

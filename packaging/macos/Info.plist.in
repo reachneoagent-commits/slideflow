@@ -45,9 +45,9 @@
   <key>NSHumanReadableCopyright</key>
   <string>Copyright © Reach Neo. MIT OR Apache-2.0.</string>
 
-  <!-- The documents DeckCraft opens, so Finder's Open With and "Change All" can offer it (the
+  <!-- The documents Slideflow opens, so Finder's Open With and "Change All" can offer it (the
        Apple events arrive through apps/deckcraft/src/apple_events.rs). PowerPoint stays the
-       preferred app for its formats unless the user picks DeckCraft. The same set as the Windows
+       preferred app for its formats unless the user picks Slideflow. The same set as the Windows
        installer (deckcraft.wxs) and the Linux desktop file; a test in apps/deckcraft keeps
        them equal. -->
   <key>CFBundleDocumentTypes</key>
@@ -60,7 +60,7 @@
       <key>LSHandlerRank</key>
       <string>Owner</string>
       <key>CFBundleTypeIconFile</key>
-      <string>DeckCraft</string>
+      <string>Slideflow</string>
       <key>LSItemContentTypes</key>
       <array>
         <string>ai.storyteller.deckcraft.presentation</string>
@@ -135,7 +135,7 @@
     </dict>
   </array>
 
-  <!-- DeckCraft's own format: a zip of a JSON manifest plus media. -->
+  <!-- Slideflow's own format: a zip of a JSON manifest plus media. -->
   <key>UTExportedTypeDeclarations</key>
   <array>
     <dict>
@@ -149,7 +149,7 @@
         <string>public.presentation</string>
       </array>
       <key>UTTypeIconFile</key>
-      <string>DeckCraft</string>
+      <string>Slideflow</string>
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.filename-extension</key>
