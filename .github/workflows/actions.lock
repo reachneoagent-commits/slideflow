@@ -17,6 +17,10 @@ workflows:
         - 'step-security/harden-runner@v2.22.4'
     '.github/workflows/release.yml': []
     '.github/workflows/sonarcloud.yml': []
+    '.github/workflows/upstream-check.yml':
+        - 'actions/checkout@v7.0.1'
+    '.github/workflows/upstream-prepare.yml':
+        - 'actions/checkout@v7.0.1'
     '.github/workflows/windows-arm64.yml': []
 dependencies:
     'actions/checkout@v7.0.1':
