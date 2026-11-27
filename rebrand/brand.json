@@ -120,7 +120,8 @@
         "Slideflow",
         "",
         "Slideflow is a modified version of DeckCraft, made by Reach Neo as part of the FlowApps suite.",
-        "It changes the name, icon, identifiers and links; rebrand/brand.json lists every change.",
+        "It changes the name, icon, identifiers and links and removes the Discord and ArtCraft links;",
+        "rebrand/brand.json and rebrand/patches/ list every change.",
         "Slideflow is not affiliated with or endorsed by the ArtCraft Team. The Slideflow name and mark",
         "(brand/, assets/app-icon/) are not covered by the license above."
       ]

@@ -1,0 +1,163 @@
+diff --git a/apps/deckcraft-cli/src/main.rs b/apps/deckcraft-cli/src/main.rs
+index 420f4f1a..97341042 100644
+--- a/apps/deckcraft-cli/src/main.rs
++++ b/apps/deckcraft-cli/src/main.rs
+@@ -88,8 +88,8 @@ fn main() -> ExitCode {
+         Some("app") => report(app(rest)),
+         Some("mcp") => report(mcp(rest)),
+         Some("links") => {
+-            use deckcraft_engine::links::{APP_PAGE, DISCORD, GITHUB, WEBSITE};
+-            outln!("Discord   {DISCORD}\nWebsite   {WEBSITE}\nApp page  {APP_PAGE}\nGitHub    {GITHUB}");
++            use deckcraft_engine::links::{GITHUB, ISSUES};
++            outln!("GitHub    {GITHUB}\nIssues    {ISSUES}");
+             ExitCode::SUCCESS
+         }
+         Some(other) => unknown(other),
+@@ -113,7 +113,7 @@ fn unknown(sub: &str) -> ExitCode {
+ 
+ fn usage() -> ExitCode {
+     eprintln!("{}", help::overview());
+-    eprintln!("\nCommunity: {}  ·  {}", deckcraft_engine::links::DISCORD, deckcraft_engine::links::APP_PAGE);
++    eprintln!("\nSource and issues: {}", deckcraft_engine::links::GITHUB);
+     ExitCode::FAILURE
+ }
+ 
+diff --git a/crates/engine/src/links.rs b/crates/engine/src/links.rs
+index ac0c787f..6a1a1e72 100644
+--- a/crates/engine/src/links.rs
++++ b/crates/engine/src/links.rs
+@@ -1,8 +1,8 @@
+-//! Community and project links (shown in Help, About, the CLI and MCP).
++//! Project links (shown in Help, About, the CLI and MCP). Slideflow's web page is its GitHub
++//! repository.
+ 
+-pub const DISCORD: &str = "https://discord.gg/artcraft";
+-pub const WEBSITE: &str = "https://getartcraft.com/";
+-pub const APPS: &str = "https://getartcraft.com/apps";
+-pub const APP_PAGE: &str = "https://getartcraft.com/apps/deckcraft";
+-pub const GITHUB: &str = "https://github.com/storytold/deckcraft";
+-pub const ISSUES: &str = "https://github.com/storytold/deckcraft/issues";
++pub const GITHUB: &str = "https://github.com/reachneoagent-commits/slideflow";
++pub const WEBSITE: &str = GITHUB;
++pub const APPS: &str = GITHUB;
++pub const APP_PAGE: &str = GITHUB;
++pub const ISSUES: &str = "https://github.com/reachneoagent-commits/slideflow/issues";
+diff --git a/crates/mcp/src/server.rs b/crates/mcp/src/server.rs
+index 2b7a0f99..63c2bfdc 100644
+--- a/crates/mcp/src/server.rs
++++ b/crates/mcp/src/server.rs
+@@ -163,10 +163,8 @@ impl Server {
+                     "capabilities": {"tools": {}, "resources": {}},
+                     "serverInfo": {"name": "deckcraft", "title": "DeckCraft", "version": env!("CARGO_PKG_VERSION"), "websiteUrl": deckcraft_engine::links::APP_PAGE},
+                     "instructions": format!(
+-                        "{INSTRUCTIONS} Backend: {}. Community: {} (Discord), {} (app page), {} (source). The `app.links` command returns these links.",
++                        "{INSTRUCTIONS} Backend: {}. Source and issues: {}. The `app.links` command returns these links.",
+                         self.backend.describe(),
+-                        deckcraft_engine::links::DISCORD,
+-                        deckcraft_engine::links::APP_PAGE,
+                         deckcraft_engine::links::GITHUB
+                     ),
+                 }))
+diff --git a/crates/ui-egui/src/app/commands.rs b/crates/ui-egui/src/app/commands.rs
+index 75eba4b2..db391267 100644
+--- a/crates/ui-egui/src/app/commands.rs
++++ b/crates/ui-egui/src/app/commands.rs
+@@ -283,8 +283,8 @@ impl SlideApp {
+                 self.dialog = Some(dialogs::Dialog::new(d));
+             }
+             "app.links" => {
+-                use deckcraft_engine::links::{APP_PAGE, APPS, DISCORD, GITHUB, WEBSITE};
+-                return Ok(json!({"discord": DISCORD, "website": WEBSITE, "apps": APPS, "appPage": APP_PAGE, "github": GITHUB}));
++                use deckcraft_engine::links::{APP_PAGE, APPS, GITHUB, WEBSITE};
++                return Ok(json!({"website": WEBSITE, "apps": APPS, "appPage": APP_PAGE, "github": GITHUB}));
+             }
+             _ => return Err(format!("unknown UI command `{id}`")),
+         }
+diff --git a/crates/ui-egui/src/backstage/files.rs b/crates/ui-egui/src/backstage/files.rs
+index 4b7cec66..02071ce5 100644
+--- a/crates/ui-egui/src/backstage/files.rs
++++ b/crates/ui-egui/src/backstage/files.rs
+@@ -251,8 +251,6 @@ pub(super) fn home(app: &mut SlideApp, ui: &mut Ui, bs: &mut Backstage, out: &mu
+             }
+         });
+     }
+-    ui.add_space(30.0);
+-    ui.hyperlink_to("Join the ArtCraft community on Discord", deckcraft_engine::links::DISCORD);
+ }
+ 
+ /// New: a blank presentation, then every theme and starter template, with a search box.
+diff --git a/crates/ui-egui/src/backstage/info.rs b/crates/ui-egui/src/backstage/info.rs
+index c0116846..ab6cb4f7 100644
+--- a/crates/ui-egui/src/backstage/info.rs
++++ b/crates/ui-egui/src/backstage/info.rs
+@@ -218,7 +218,7 @@ pub(super) fn about(app: &mut SlideApp, ui: &mut Ui) {
+             ui.horizontal(|ui| {
+                 let (r, _) = ui.allocate_exact_size(vec2(40.0, 40.0), Sense::hover());
+                 crate::dialogs::paint_logo(ui.painter(), r);
+-                ui.label(RichText::new("DeckCraft").font(theme::bold(24.0)).color(t.text));
++                ui.label(RichText::new("Slideflow").font(theme::bold(24.0)).color(t.text));
+             });
+             dim(ui, &crate::dialogs::version_line());
+             dim(ui, "Open source under MIT OR Apache-2.0. Not affiliated with Microsoft.");
+@@ -226,7 +226,6 @@ pub(super) fn about(app: &mut SlideApp, ui: &mut Ui) {
+             if task(ui, Icon::Help, "Credits", "Credits", "The people and models who built DeckCraft.", true) {
+                 let _ = app.run("app.about", json!({}));
+             }
+-            ui.hyperlink_to("Join our community on Discord", deckcraft_engine::links::DISCORD);
+             ui.hyperlink_to("Source on GitHub", deckcraft_engine::links::GITHUB);
+         });
+         ui.add_space(40.0);
+diff --git a/crates/ui-egui/src/backstage/tests.rs b/crates/ui-egui/src/backstage/tests.rs
+index 9153f4c4..8033aba8 100644
+--- a/crates/ui-egui/src/backstage/tests.rs
++++ b/crates/ui-egui/src/backstage/tests.rs
+@@ -835,7 +835,7 @@ fn about_has_product_links_and_credits_without_account_controls() {
+     assert_eq!(page(&h), Some(Page::About));
+     assert!(h.query_by_label("User Information").is_none());
+     assert!(h.query_by_label("Source on GitHub").is_some());
+-    assert!(h.query_by_label("Join our community on Discord").is_some());
++    assert!(h.query_by_label("Join our community on Discord").is_none());
+     assert!(h.query_all_by_label("Appearance").next().is_some());
+     click_on_page(&h, "Credits");
+     h.run_steps(3);
+diff --git a/crates/ui-egui/src/dialogs/about.rs b/crates/ui-egui/src/dialogs/about.rs
+index 059543b6..46540aaa 100644
+--- a/crates/ui-egui/src/dialogs/about.rs
++++ b/crates/ui-egui/src/dialogs/about.rs
+@@ -20,17 +20,19 @@ pub fn about(_app: &mut SlideApp, ui: &mut Ui) {
+     ui.vertical_centered(|ui| {
+         let (r, _) = ui.allocate_exact_size(vec2(64.0, 64.0), Sense::hover());
+         paint_logo(ui.painter(), r);
+-        ui.label(egui::RichText::new("DeckCraft").font(theme::bold(22.0)));
++        ui.label(egui::RichText::new("Slideflow").font(theme::bold(22.0)));
+         ui.label(egui::RichText::new(version_line()).color(t.text_dim));
+         ui.add_space(6.0);
+         ui.label("Presentations and slide shows, rebuilt from scratch in pure Rust.");
+         ui.label("An open-source, clean-room project. Not affiliated with Microsoft.");
+         ui.add_space(6.0);
+-        ui.hyperlink_to("Join our community on Discord", deckcraft_engine::links::DISCORD);
+-        ui.hyperlink_to("getartcraft.com/apps/deckcraft", deckcraft_engine::links::APP_PAGE);
+         ui.hyperlink_to("Source on GitHub", deckcraft_engine::links::GITHUB);
+         ui.add_space(6.0);
+-        ui.label(egui::RichText::new("MIT OR Apache-2.0 · © 2026 ArtCraft Team and the DeckCraft contributors").size(11.0).color(t.text_faint));
++        ui.label(
++            egui::RichText::new("MIT OR Apache-2.0 · © 2026 ArtCraft Team and the DeckCraft contributors, and Reach Neo")
++                .size(11.0)
++                .color(t.text_faint),
++        );
+     });
+ }
+ 
+diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
+index 48253bb0..e355982e 100644
+--- a/crates/ui-egui/src/lib.rs
++++ b/crates/ui-egui/src/lib.rs
+@@ -157,7 +157,7 @@ pub const UI_COMMANDS: &[(&str, &str, Option<&str>, &str)] = &[
+     ("app.qat", "Quick Access Toolbar", None, "{add: command id, params?, label?, icon?} | {remove: id, params?} | {reset: true} → [buttons]"),
+     ("app.find", "Find…", Some("Cmd+F"), "{}"),
+     ("app.replace", "Replace…", Some("Cmd+H"), "{}"),
+-    ("app.links", "Community Links", None, "{}"),
++    ("app.links", "Project Links", None, "{}"),
+ ];
+ 
+ pub struct Perf {

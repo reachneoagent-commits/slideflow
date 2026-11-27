@@ -26,8 +26,8 @@ merge we can take upstream's version of any conflicted file and re-apply our cha
   occurrence is replaced; `"regex": true` uses a regular expression.
 - **prepend / append**: text added once (the agent note in `CLAUDE.md`, our `NOTICE` paragraph,
   merge rules in `.gitattributes`, release-build lines in `.gitignore`).
-- Patches in `rebrand/patches/` (none yet) for changes too big for find and replace, applied with
-  a three-way merge.
+- Patches in `rebrand/patches/` for changes too big for find and replace, applied with a
+  three-way merge: no Discord or ArtCraft links in the About box, backstage screens, CLI or AI-agent server.
 - Icons: `rebrand/app-icon/` copied over upstream's files of the same names.
 
 Left alone on purpose: crate and binary names (`deckcraft*`), environment variables, log-file names,
@@ -74,7 +74,8 @@ python3 rebrand/apply.py --check     # prints nothing and exits 0 when everythin
 
 If the script stops with `could not find … to edit`, upstream changed that line: find where the
 text went and update that entry in `rebrand/brand.json`. If a patch leaves conflict markers,
-resolve them, then refresh the patch with `git diff <upstream commit> -- <its files>`.
+resolve them, then refresh the patch with
+`git diff <upstream commit> -- <its files> > rebrand/patches/01-no-discord.patch`.
 
 Build and test, commit and open a pull request:
 
