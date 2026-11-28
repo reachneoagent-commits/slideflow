@@ -95,3 +95,22 @@ in craft-fonts, including the LXGW Reserved Font Names and original Klee notice.
 | Family | Author | Source | Licence | Use |
 |---|---|---|---|---|
 | LXGW WenKai Lite Regular 1.530 | LXGW; original Klee Project Authors / Fontworks | https://github.com/lxgw/LxgwWenKai-Lite/tree/b712c83d98acf977bacfb7fb010207802808bda9 | OFL-1.1, unmodified upstream font | Native Chinese glyph fallback after existing UI faces; font SHA256 `f799a538a3355877e597a0ae04050e897932c9ae7689eb9227c2953c5dd549ea`, OFL SHA256 `0333a85fe077b6849f8e417acc44e8bd879442ceb681e271acf93e2d57fd4e2e` |
+
+## Slideflow (FlowApps) brand files
+
+These files are the Slideflow and FlowApps name and mark, added by the Slideflow fork (`rebrand/`). They are trademarks of Reach Neo, not open source, and not covered by the licence of this repository (see `NOTICE`).
+
+| Asset | Author | Source | Licence | Notes |
+|---|---|---|---|---|
+| `assets/header-dark.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | README header image |
+| `assets/header-light.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | README header image |
+| `brand/brand-color.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |
+| `brand/logoblk.svg` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |
+| `brand/logocol1.svg` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |
+| `brand/logocol2.svg` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |
+| `brand/logowht.svg` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |
+| `brand/slideflow-brand.ai` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |
+| `rebrand/app-icon/deckcraft-1024.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow app icon; `rebrand/apply.py` copies it over the upstream icon in `assets/app-icon/` |
+| `rebrand/app-icon/deckcraft.icns` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow app icon; `rebrand/apply.py` copies it over the upstream icon in `assets/app-icon/` |
+| `rebrand/app-icon/deckcraft.ico` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow app icon; `rebrand/apply.py` copies it over the upstream icon in `assets/app-icon/` |
+| `rebrand/app-icon/hicolor/256x256/apps/ai.storyteller.deckcraft.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow app icon; `rebrand/apply.py` copies it over the upstream icon in `assets/app-icon/` |

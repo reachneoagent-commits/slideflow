@@ -22,6 +22,8 @@ workflows:
     '.github/workflows/upstream-prepare.yml':
         - 'actions/checkout@v7.0.1'
     '.github/workflows/windows-arm64.yml': []
+    '.github/workflows/windows-release.yml':
+        - 'actions/checkout@v7.0.1'
 dependencies:
     'actions/checkout@v7.0.1':
         ref: 'v7.0.1'
