@@ -34,8 +34,8 @@ Download the installer for your system (latest version, 0.1.0 release candidate 
 
 | Platform | Download |
 |---|---|
-| macOS, Apple silicon (M1 or newer) | [DMG](https://github.com/reachneoagent-commits/slideflow/releases/download/v0.1.0-rc.4/slideflow-0.1.0-rc.4-macos-arm64.dmg) |
-| Windows x64 | [Portable zip](https://github.com/reachneoagent-commits/slideflow/releases/download/v0.1.0-rc.4/slideflow-0.1.0-rc.4-windows-x64-portable.zip) (unzip and run) |
+| macOS, Apple silicon (M1 or newer) | [DMG](https://github.com/reachneoagent-commits/slideflow/releases/download/v0.1.0-rc.5/slideflow-0.1.0-rc.5-macos-arm64.dmg) |
+| Windows x64 | [Portable zip](https://github.com/reachneoagent-commits/slideflow/releases/download/v0.1.0-rc.5/slideflow-0.1.0-rc.5-windows-x64-portable.zip) (unzip and run) |
 
 macOS on Intel and a Windows installer are not built yet. Older versions and checksums are on the [Releases page](https://github.com/reachneoagent-commits/slideflow/releases).
 
