@@ -21,11 +21,9 @@ jobs:
       TAG: ${{ inputs.tag }}
       RUSTFLAGS: -C target-feature=+crt-static
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
         with:
           ref: ${{ inputs.tag }}
-
-      - uses: dtolnay/rust-toolchain@stable
 
       - name: Build slideflow (release, Windows x64)
         run: cargo build --release -p deckcraft

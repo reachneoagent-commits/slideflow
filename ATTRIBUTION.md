@@ -23,6 +23,8 @@ artwork. The ribbon and menu icons stay original drawings.
 | `packaging/macos/dmg/background.svg` | @XusBadia | DeckCraft macOS DMG window background, original work for this repository (2026-10-08), derived from the DeckCraft app icon `assets/app-icon/deckcraft-1024.png` (referenced via `<image>`, not copied); text is outlined Inter / JetBrains Mono glyph paths | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Finder window of the macOS DMG; `packaging/macos/dmg/generate.py` renders it to `background.tiff` |
 | `packaging/macos/dmg/background.tiff` | @XusBadia | Rendered from `packaging/macos/dmg/background.svg` by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 1x + 2x HiDPI TIFF for the macOS DMG window; includes the app icon (see its row) and LittleCMS's built-in sRGB profile ("No copyright, use freely") |
 | `assets/app-icon/deckcraft.icns`, `assets/app-icon/deckcraft.ico` | DeckCraft contributors | generated from the PNGs above by `packaging/icons.sh` (sips/iconutil, `cargo xtask ico`) | MIT OR Apache-2.0 | macOS and Windows app icons |
+| `assets/app-icon/deckcraft-nightly*` (`deckcraft-nightly.png`, `deckcraft-nightly-1024.png`, `deckcraft-nightly.ico`, `deckcraft-nightly.icns`) | @skylartaylor | derivative of `assets/app-icon/deckcraft-1024.png` and `assets/app-icon/icon-source.deckcraft`, recoloured in code (background `#f26b1d` → `#a6420c`; foreground, padding and accent bars unchanged; native-size frames area-averaged from the 1024 master); recorded in `assets/app-icon/nightly-provenance.json` | MIT OR Apache-2.0 | DeckCraft Nightly app icon: window/desktop icon, macOS `CFBundleIconFile`, Windows resources and `.ico` |
+| `assets/app-icon/nightly-provenance.json` | @skylartaylor | written alongside the nightly icons above; names their inputs, the recolour method and every output SHA-256 | MIT OR Apache-2.0 | Provenance of the DeckCraft Nightly icons |
 | `assets/app-icon/hicolor/scalable/apps/ai.storyteller.deckcraft.svg` | DeckCraft contributors | the shapes of `assets/app-icon/icon-source.deckcraft` written out as SVG (same coordinates, colours and corner radii) | MIT OR Apache-2.0 | Scalable app icon for Linux desktops (hicolor theme) |
 | `assets/app-icon/icon-source.deckcraft` | DeckCraft contributors | made with `deckcraft-cli run` (see git history) | MIT OR Apache-2.0 | Source of the placeholder icon |
 | `docs/images/editor.png`, `docs/images/shape-format.png`, `docs/images/format-pane.png`, `docs/images/slide-sorter.png`, `docs/images/dark-mode.png`, `docs/images/sample-deck.png` | DeckCraft contributors | Screenshots of DeckCraft and slides rendered by `deckcraft-cli` from the built-in sample deck (original content; Inter font, OFL-1.1) | MIT OR Apache-2.0 | README screenshots |
@@ -93,3 +95,22 @@ in craft-fonts, including the LXGW Reserved Font Names and original Klee notice.
 | Family | Author | Source | Licence | Use |
 |---|---|---|---|---|
 | LXGW WenKai Lite Regular 1.530 | LXGW; original Klee Project Authors / Fontworks | https://github.com/lxgw/LxgwWenKai-Lite/tree/b712c83d98acf977bacfb7fb010207802808bda9 | OFL-1.1, unmodified upstream font | Native Chinese glyph fallback after existing UI faces; font SHA256 `f799a538a3355877e597a0ae04050e897932c9ae7689eb9227c2953c5dd549ea`, OFL SHA256 `0333a85fe077b6849f8e417acc44e8bd879442ceb681e271acf93e2d57fd4e2e` |
+
+## Slideflow (FlowApps) brand files
+
+These files are the Slideflow and FlowApps name and mark, added by the Slideflow fork (`rebrand/`). They are trademarks of Reach Neo, not open source, and not covered by the licence of this repository (see `NOTICE`).
+
+| Asset | Author | Source | Licence | Notes |
+|---|---|---|---|---|
+| `assets/header-dark.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | README header image |
+| `assets/header-light.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | README header image |
+| `brand/brand-color.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |
+| `brand/logoblk.svg` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |
+| `brand/logocol1.svg` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |
+| `brand/logocol2.svg` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |
+| `brand/logowht.svg` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |
+| `brand/slideflow-brand.ai` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |
+| `rebrand/app-icon/deckcraft-1024.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow app icon; `rebrand/apply.py` copies it over the upstream icon in `assets/app-icon/` |
+| `rebrand/app-icon/deckcraft.icns` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow app icon; `rebrand/apply.py` copies it over the upstream icon in `assets/app-icon/` |
+| `rebrand/app-icon/deckcraft.ico` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow app icon; `rebrand/apply.py` copies it over the upstream icon in `assets/app-icon/` |
+| `rebrand/app-icon/hicolor/256x256/apps/ai.storyteller.deckcraft.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow app icon; `rebrand/apply.py` copies it over the upstream icon in `assets/app-icon/` |

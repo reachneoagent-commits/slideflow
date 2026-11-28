@@ -7,23 +7,8 @@
   "edits": [
     {
       "file": "apps/deckcraft/src/main.rs",
-      "find": "Application Support/DeckCraft\"",
-      "replace": "Application Support/Slideflow\""
-    },
-    {
-      "file": "apps/deckcraft/src/main.rs",
       "find": "\"DeckCraft\"",
       "replace": "\"Slideflow\""
-    },
-    {
-      "file": "apps/deckcraft/src/main.rs",
-      "find": "c.join(\"deckcraft\")",
-      "replace": "c.join(\"slideflow\")"
-    },
-    {
-      "file": "apps/deckcraft/src/main.rs",
-      "find": "\"ai.storyteller.deckcraft\"",
-      "replace": "\"com.slideflow.app\""
     },
     {
       "file": "apps/deckcraft/src/main.rs",
@@ -44,6 +29,46 @@
       "file": "apps/deckcraft/src/main.rs",
       "find": "\"DeckCraft needs a graphical session",
       "replace": "\"Slideflow needs a graphical session"
+    },
+    {
+      "file": "apps/deckcraft/src/main.rs",
+      "find": "writeln!(std::io::stdout(), \"DeckCraft {}\"",
+      "replace": "writeln!(std::io::stdout(), \"Slideflow {}\""
+    },
+    {
+      "file": "apps/deckcraft/src/app_dirs.rs",
+      "find": "Application Support/DeckCraft\"",
+      "replace": "Application Support/Slideflow\""
+    },
+    {
+      "file": "apps/deckcraft/src/app_dirs.rs",
+      "find": ".join(\"DeckCraft\")",
+      "replace": ".join(\"Slideflow\")"
+    },
+    {
+      "file": "apps/deckcraft/src/app_dirs.rs",
+      "find": ".join(\"deckcraft\")",
+      "replace": ".join(\"slideflow\")"
+    },
+    {
+      "file": "crates/ui-egui/src/os_window.rs",
+      "find": "pub const APP_ID: &str = \"ai.storyteller.deckcraft\";",
+      "replace": "pub const APP_ID: &str = \"com.slideflow.app\";"
+    },
+    {
+      "file": "crates/ui-egui/src/os_window.rs",
+      "find": "LaunchIdentity::Stable => \"DeckCraft\",",
+      "replace": "LaunchIdentity::Stable => \"Slideflow\","
+    },
+    {
+      "file": "crates/ui-egui/src/flavor.rs",
+      "find": "else { \"DeckCraft\" }",
+      "replace": "else { \"Slideflow\" }"
+    },
+    {
+      "file": "crates/ui-egui/src/framework.rs",
+      "find": "name: \"DeckCraft\"",
+      "replace": "name: \"Slideflow\""
     },
     {
       "file": "packaging/macos/Info.plist.in",
@@ -89,6 +114,45 @@
       "file": "packaging/windows/deckcraft.wxs",
       "find": "DeckCraft",
       "replace": "Slideflow"
+    },
+    {
+      "file": "packaging/windows/install-policy.json",
+      "find": "DeckCraft",
+      "replace": "Slideflow",
+      "why": "must match the names in the rebranded .wxs"
+    },
+    {
+      "file": "packaging/windows/check-install-policy.ps1",
+      "find": "$directories['CraftSuiteFolder'][1] -ne 'ArtCraft') { throw 'Expected the app under the ArtCraft suite folder.' }",
+      "replace": "$directories['CraftSuiteFolder'][1] -ne 'FlowApps') { throw 'Expected the app under the FlowApps suite folder.' }"
+    },
+    {
+      "file": "packaging/windows/check-install-policy.ps1",
+      "find": "ArtCraft\\$($policy.name)",
+      "replace": "FlowApps\\$($policy.name)",
+      "why": "Slideflow installs under the FlowApps suite folder"
+    },
+    {
+      "file": "packaging/windows/install-policy.wxi",
+      "find": "Key=\"Software\\DeckCraft\"",
+      "replace": "Key=\"Software\\Slideflow\"",
+      "why": "read back the folder our .wxs writes under Software\\Slideflow"
+    },
+    {
+      "file": "packaging/windows/install-policy.wxi",
+      "find": "\\ArtCraft\\DeckCraft\\",
+      "replace": "\\FlowApps\\Slideflow\\",
+      "why": "install into the FlowApps suite folder, as the .wxs and install-policy.json say"
+    },
+    {
+      "file": "packaging/windows/install-policy.wxi",
+      "find": "the ArtCraft folder",
+      "replace": "the FlowApps folder"
+    },
+    {
+      "file": ".github/workflows/windows-arm64.yml",
+      "find": "install-relative-path: Programs/ArtCraft/DeckCraft",
+      "replace": "install-relative-path: Programs/FlowApps/Slideflow"
     }
   ],
   "prepend": [
@@ -152,6 +216,31 @@
         ".idea/",
         "*.swp",
         "*.swo"
+      ]
+    },
+    {
+      "file": "ATTRIBUTION.md",
+      "marker": "## Slideflow (FlowApps) brand files",
+      "lines": [
+        "",
+        "## Slideflow (FlowApps) brand files",
+        "",
+        "These files are the Slideflow and FlowApps name and mark, added by the Slideflow fork (`rebrand/`). They are trademarks of Reach Neo, not open source, and not covered by the licence of this repository (see `NOTICE`).",
+        "",
+        "| Asset | Author | Source | Licence | Notes |",
+        "|---|---|---|---|---|",
+        "| `assets/header-dark.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | README header image |",
+        "| `assets/header-light.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | README header image |",
+        "| `brand/brand-color.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |",
+        "| `brand/logoblk.svg` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |",
+        "| `brand/logocol1.svg` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |",
+        "| `brand/logocol2.svg` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |",
+        "| `brand/logowht.svg` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |",
+        "| `brand/slideflow-brand.ai` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow brand kit |",
+        "| `rebrand/app-icon/deckcraft-1024.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow app icon; `rebrand/apply.py` copies it over the upstream icon in `assets/app-icon/` |",
+        "| `rebrand/app-icon/deckcraft.icns` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow app icon; `rebrand/apply.py` copies it over the upstream icon in `assets/app-icon/` |",
+        "| `rebrand/app-icon/deckcraft.ico` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow app icon; `rebrand/apply.py` copies it over the upstream icon in `assets/app-icon/` |",
+        "| `rebrand/app-icon/hicolor/256x256/apps/ai.storyteller.deckcraft.png` | Reach Neo | FlowApps brand kit | Slideflow brand, not open source (see `NOTICE`) | Slideflow app icon; `rebrand/apply.py` copies it over the upstream icon in `assets/app-icon/` |"
       ]
     }
   ]

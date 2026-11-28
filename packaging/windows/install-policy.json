@@ -1,6 +1,6 @@
 {
   "id": "deckcraft",
-  "name": "DeckCraft",
+  "name": "Slideflow",
   "upgradeCode": "6F9C69E7-7825-40D2-BF26-C274DA676425",
   "sources": [
     "deckcraft.wxs"
@@ -20,7 +20,7 @@
       "-1",
       "Software\\Classes\\Applications\\deckcraft.exe",
       "FriendlyAppName",
-      "DeckCraft"
+      "Slideflow"
     ],
     [
       "-1",
@@ -55,19 +55,19 @@
     [
       "-1",
       "Software\\Classes\\.pptx\\OpenWithProgids",
-      "DeckCraft.Presentation",
+      "Slideflow.Presentation",
       ""
     ],
     [
       "-1",
       "Software\\Classes\\.potx\\OpenWithProgids",
-      "DeckCraft.Presentation",
+      "Slideflow.Presentation",
       ""
     ],
     [
       "-1",
       "Software\\Classes\\.ppsx\\OpenWithProgids",
-      "DeckCraft.Presentation",
+      "Slideflow.Presentation",
       ""
     ],
     [
