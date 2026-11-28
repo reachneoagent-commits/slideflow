@@ -7,23 +7,8 @@
   "edits": [
     {
       "file": "apps/deckcraft/src/main.rs",
-      "find": "Application Support/DeckCraft\"",
-      "replace": "Application Support/Slideflow\""
-    },
-    {
-      "file": "apps/deckcraft/src/main.rs",
       "find": "\"DeckCraft\"",
       "replace": "\"Slideflow\""
-    },
-    {
-      "file": "apps/deckcraft/src/main.rs",
-      "find": "c.join(\"deckcraft\")",
-      "replace": "c.join(\"slideflow\")"
-    },
-    {
-      "file": "apps/deckcraft/src/main.rs",
-      "find": "\"ai.storyteller.deckcraft\"",
-      "replace": "\"com.slideflow.app\""
     },
     {
       "file": "apps/deckcraft/src/main.rs",
@@ -44,6 +29,46 @@
       "file": "apps/deckcraft/src/main.rs",
       "find": "\"DeckCraft needs a graphical session",
       "replace": "\"Slideflow needs a graphical session"
+    },
+    {
+      "file": "apps/deckcraft/src/main.rs",
+      "find": "writeln!(std::io::stdout(), \"DeckCraft {}\"",
+      "replace": "writeln!(std::io::stdout(), \"Slideflow {}\""
+    },
+    {
+      "file": "apps/deckcraft/src/app_dirs.rs",
+      "find": "Application Support/DeckCraft\"",
+      "replace": "Application Support/Slideflow\""
+    },
+    {
+      "file": "apps/deckcraft/src/app_dirs.rs",
+      "find": ".join(\"DeckCraft\")",
+      "replace": ".join(\"Slideflow\")"
+    },
+    {
+      "file": "apps/deckcraft/src/app_dirs.rs",
+      "find": ".join(\"deckcraft\")",
+      "replace": ".join(\"slideflow\")"
+    },
+    {
+      "file": "crates/ui-egui/src/os_window.rs",
+      "find": "pub const APP_ID: &str = \"ai.storyteller.deckcraft\";",
+      "replace": "pub const APP_ID: &str = \"com.slideflow.app\";"
+    },
+    {
+      "file": "crates/ui-egui/src/os_window.rs",
+      "find": "LaunchIdentity::Stable => \"DeckCraft\",",
+      "replace": "LaunchIdentity::Stable => \"Slideflow\","
+    },
+    {
+      "file": "crates/ui-egui/src/flavor.rs",
+      "find": "else { \"DeckCraft\" }",
+      "replace": "else { \"Slideflow\" }"
+    },
+    {
+      "file": "crates/ui-egui/src/framework.rs",
+      "find": "name: \"DeckCraft\"",
+      "replace": "name: \"Slideflow\""
     },
     {
       "file": "packaging/macos/Info.plist.in",

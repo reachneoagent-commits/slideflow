@@ -1,8 +1,8 @@
 diff --git a/apps/deckcraft-cli/src/main.rs b/apps/deckcraft-cli/src/main.rs
-index 420f4f1a..97341042 100644
+index 961a3ec3..8dd4bf66 100644
 --- a/apps/deckcraft-cli/src/main.rs
 +++ b/apps/deckcraft-cli/src/main.rs
-@@ -88,8 +88,8 @@ fn main() -> ExitCode {
+@@ -98,8 +98,8 @@ fn main() -> ExitCode {
          Some("app") => report(app(rest)),
          Some("mcp") => report(mcp(rest)),
          Some("links") => {
@@ -13,7 +13,7 @@ index 420f4f1a..97341042 100644
              ExitCode::SUCCESS
          }
          Some(other) => unknown(other),
-@@ -113,7 +113,7 @@ fn unknown(sub: &str) -> ExitCode {
+@@ -123,7 +123,7 @@ fn unknown(sub: &str) -> ExitCode {
  
  fn usage() -> ExitCode {
      eprintln!("{}", help::overview());
@@ -59,10 +59,10 @@ index 2b7a0f99..63c2bfdc 100644
                      ),
                  }))
 diff --git a/crates/ui-egui/src/app/commands.rs b/crates/ui-egui/src/app/commands.rs
-index 75eba4b2..db391267 100644
+index e5c43af1..bb54e271 100644
 --- a/crates/ui-egui/src/app/commands.rs
 +++ b/crates/ui-egui/src/app/commands.rs
-@@ -283,8 +283,8 @@ impl SlideApp {
+@@ -284,8 +284,8 @@ impl SlideApp {
                  self.dialog = Some(dialogs::Dialog::new(d));
              }
              "app.links" => {
@@ -87,7 +87,7 @@ index 4b7cec66..02071ce5 100644
  
  /// New: a blank presentation, then every theme and starter template, with a search box.
 diff --git a/crates/ui-egui/src/backstage/info.rs b/crates/ui-egui/src/backstage/info.rs
-index c0116846..ab6cb4f7 100644
+index 5a9ed4aa..f8cd2608 100644
 --- a/crates/ui-egui/src/backstage/info.rs
 +++ b/crates/ui-egui/src/backstage/info.rs
 @@ -218,7 +218,7 @@ pub(super) fn about(app: &mut SlideApp, ui: &mut Ui) {
@@ -108,7 +108,7 @@ index c0116846..ab6cb4f7 100644
          });
          ui.add_space(40.0);
 diff --git a/crates/ui-egui/src/backstage/tests.rs b/crates/ui-egui/src/backstage/tests.rs
-index 9153f4c4..8033aba8 100644
+index bd580553..cf48d37a 100644
 --- a/crates/ui-egui/src/backstage/tests.rs
 +++ b/crates/ui-egui/src/backstage/tests.rs
 @@ -835,7 +835,7 @@ fn about_has_product_links_and_credits_without_account_controls() {
@@ -121,17 +121,10 @@ index 9153f4c4..8033aba8 100644
      click_on_page(&h, "Credits");
      h.run_steps(3);
 diff --git a/crates/ui-egui/src/dialogs/about.rs b/crates/ui-egui/src/dialogs/about.rs
-index 059543b6..46540aaa 100644
+index 9c94db3d..07875269 100644
 --- a/crates/ui-egui/src/dialogs/about.rs
 +++ b/crates/ui-egui/src/dialogs/about.rs
-@@ -20,17 +20,19 @@ pub fn about(_app: &mut SlideApp, ui: &mut Ui) {
-     ui.vertical_centered(|ui| {
-         let (r, _) = ui.allocate_exact_size(vec2(64.0, 64.0), Sense::hover());
-         paint_logo(ui.painter(), r);
--        ui.label(egui::RichText::new("DeckCraft").font(theme::bold(22.0)));
-+        ui.label(egui::RichText::new("Slideflow").font(theme::bold(22.0)));
-         ui.label(egui::RichText::new(version_line()).color(t.text_dim));
-         ui.add_space(6.0);
+@@ -26,11 +26,13 @@ pub fn about(_app: &mut SlideApp, ui: &mut Ui) {
          ui.label("Presentations and slide shows, rebuilt from scratch in pure Rust.");
          ui.label("An open-source, clean-room project. Not affiliated with Microsoft.");
          ui.add_space(6.0);
@@ -149,10 +142,10 @@ index 059543b6..46540aaa 100644
  }
  
 diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
-index 48253bb0..e355982e 100644
+index f866144f..e08ce206 100644
 --- a/crates/ui-egui/src/lib.rs
 +++ b/crates/ui-egui/src/lib.rs
-@@ -157,7 +157,7 @@ pub const UI_COMMANDS: &[(&str, &str, Option<&str>, &str)] = &[
+@@ -160,7 +160,7 @@ pub const UI_COMMANDS: &[(&str, &str, Option<&str>, &str)] = &[
      ("app.qat", "Quick Access Toolbar", None, "{add: command id, params?, label?, icon?} | {remove: id, params?} | {reset: true} → [buttons]"),
      ("app.find", "Find…", Some("Cmd+F"), "{}"),
      ("app.replace", "Replace…", Some("Cmd+H"), "{}"),
