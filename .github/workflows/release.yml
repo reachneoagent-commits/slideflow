@@ -37,6 +37,8 @@ jobs:
 
       - name: Create macOS DMG
         run: |
+          # The cargo target dir fills the runner disk; the binary is already in the app bundle.
+          rm -rf target
           mkdir -p dist
           hdiutil create -srcfolder Slideflow.app -ov -format UDZO "dist/slideflow-${VERSION}-macos-arm64.dmg"
 
@@ -45,7 +47,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release view "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" --generate-notes --prerelease || true
+          gh release view "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" --generate-notes --latest || true
           gh release upload "$GITHUB_REF_NAME" "dist/slideflow-${VERSION}-macos-arm64.dmg" -R "$GITHUB_REPOSITORY" --clobber
 
   build-windows:
@@ -75,7 +77,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release view "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" --generate-notes --prerelease || true
+          gh release view "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" --generate-notes --latest || true
           gh release upload "$GITHUB_REF_NAME" "dist/slideflow-${VERSION}-windows-x64-portable.zip" -R "$GITHUB_REPOSITORY" --clobber
 
   checksums:
@@ -95,5 +97,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release view "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" --generate-notes --prerelease || true
+          gh release view "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" --generate-notes --latest || true
           gh release upload "$GITHUB_REF_NAME" "dist/SHA256SUMS.txt" -R "$GITHUB_REPOSITORY" --clobber
